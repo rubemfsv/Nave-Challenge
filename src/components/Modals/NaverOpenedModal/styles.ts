@@ -84,7 +84,7 @@ export const InfoContent = styled.div`
 export const Close = styled(FaTimes)`
   display: flex;
   align-items: right;
-  margin-left: 400px;
+  margin-left: 420px;
 
   transition: opacity 0.2s;
   &:hover {

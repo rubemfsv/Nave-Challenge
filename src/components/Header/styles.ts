@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 100%;
@@ -21,4 +22,18 @@ export const Title = styled.div`
   align-items: center;
 
   color: var(--color-black);
+`;
+
+export const StyledLink = styled(Link)`
+  color: #000;
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    color: #000;
+    text-decoration: none;
+  }
 `;

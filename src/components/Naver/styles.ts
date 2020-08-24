@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { FaPen, FaTrash } from 'react-icons/fa';
 
 export const Container = styled.div`
@@ -73,5 +74,19 @@ export const EditIcon = styled(FaPen)`
   &:hover {
     cursor: pointer;
     opacity: 0.9;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: #000;
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    color: #000;
+    text-decoration: none;
   }
 `;

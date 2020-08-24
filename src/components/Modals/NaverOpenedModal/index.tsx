@@ -15,7 +15,8 @@ import {
   Filter,
 } from './styles';
 
-import { NaverProps } from '../../components/Naver';
+import { NaverProps } from '../../Naver';
+import DeleteOpenedModal from '../DeleteOpenedModal';
 
 const NaverOpenedModal: React.FC<NaverProps> = ({
   jobRole,
@@ -32,14 +33,11 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
 
   function handleNaverModal() {
     setIsNaverModalOpen(!isNaverModalOpen);
-    console.log('Fecha');
-    console.log(isNaverModalOpen);
   }
 
   function handleDeleteModal() {
     setIsDeleteModalOpen(!isDeleteModalOpen);
-    console.log('Deleta');
-    console.log(isDeleteModalOpen);
+    handleNaverModal();
   }
 
   function handleEditModal() {
@@ -50,26 +48,28 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
 
   return (
     <>
+      {isDeleteModalOpen && <DeleteOpenedModal />}
+
       {isNaverModalOpen && (
         <Filter>
-        <Container>
-          <Image src={url} />
-          <CardInfo>
-            <Close onClick={() => handleNaverModal()} />
-            <Name>{name}</Name>
-            <Position>{jobRole}</Position>
-            <InfoTitle>Idade</InfoTitle>
-            <InfoContent>{birthdate}</InfoContent>
-            <InfoTitle>Tempo de Empresa</InfoTitle>
-            <InfoContent>{admissionDate}</InfoContent>
-            <InfoTitle>Projetos que participou</InfoTitle>
-            <InfoContent>{project}</InfoContent>
-            <ButtonsContainer>
-              <DeleteIcon onClick={() => handleDeleteModal()} />
-              <EditIcon onClick={() => handleEditModal()} />
-            </ButtonsContainer>
-          </CardInfo>
-        </Container>
+          <Container>
+            <Image src={url} />
+            <CardInfo>
+              <Close onClick={() => handleNaverModal()} />
+              <Name>{name}</Name>
+              <Position>{jobRole}</Position>
+              <InfoTitle>Idade</InfoTitle>
+              <InfoContent>{birthdate}</InfoContent>
+              <InfoTitle>Tempo de Empresa</InfoTitle>
+              <InfoContent>{admissionDate}</InfoContent>
+              <InfoTitle>Projetos que participou</InfoTitle>
+              <InfoContent>{project}</InfoContent>
+              <ButtonsContainer>
+                <DeleteIcon onClick={() => handleDeleteModal()} />
+                <EditIcon onClick={() => handleEditModal()} />
+              </ButtonsContainer>
+            </CardInfo>
+          </Container>
         </Filter>
       )}
     </>

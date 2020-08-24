@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import NaverOpenedModal from '../../Modals/NaverOpenedModal';
-import DeleteOpenedModal from '../../Modals/DeleteOpenedModal';
-import EditOpenedModal from '../../Modals/EditOpenedModal';
+import NaverOpenedModal from '../Modals/NaverOpenedModal';
+import DeleteOpenedModal from '../Modals/DeleteOpenedModal';
+import EditOpenedModal from '../Modals/EditOpenedModal';
 
 import {
   Container,
@@ -14,6 +14,7 @@ import {
   ButtonsContainer,
   DeleteIcon,
   EditIcon,
+  StyledLink,
 } from './styles';
 
 export interface NaverProps {
@@ -32,9 +33,8 @@ const Naver: React.FC<NaverProps> = ({
   project,
   name,
   url,
-  children,
 }) => {
-  const [isNaverModalOpen, setIsNaverModalOpen] = useState(true);
+  const [isNaverModalOpen, setIsNaverModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
@@ -48,12 +48,6 @@ const Naver: React.FC<NaverProps> = ({
     setIsDeleteModalOpen(!isDeleteModalOpen);
     console.log('Deleta');
     console.log(isDeleteModalOpen);
-  }
-
-  function handleEditModal() {
-    setIsEditModalOpen(!isEditModalOpen);
-    console.log('Edita');
-    console.log(isEditModalOpen);
   }
 
   return (
@@ -80,7 +74,9 @@ const Naver: React.FC<NaverProps> = ({
           </ClickArea>
           <ButtonsContainer>
             <DeleteIcon onClick={() => handleDeleteModal()} />
-            <EditIcon onClick={() => handleEditModal()} />
+            <StyledLink to="/edit">
+              <EditIcon />
+            </StyledLink>
           </ButtonsContainer>
         </Card>
       </Container>
