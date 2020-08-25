@@ -1,7 +1,24 @@
-import axios from 'axios';
+import { getToken } from './auth';
 
-const api = axios.create({
-  baseURL: 'https://navedex-api.herokuapp.com/v1',
-});
+export const useFetch = async (
+  URL: string,
+  method = 'GET',
+  body?: object,
+): Promise<Response | any> => {
+  const headers = new Headers();
+  const response = await fetch(URL, {
+    method,
+    headers,
+    body: JSON.stringify(body),
+  });
 
-export default api;
+  headers.append('Authorization', `Bearer ${getToken()}`);
+  headers.append('Content-type', 'application/json');
+
+  if (response.status === 401) {
+    (window as any).handleChangeAuth(false);
+  } else if (response.status !== 200) {
+    throw new Error(`${response.status}`);
+  }
+  return response;
+};

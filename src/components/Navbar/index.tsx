@@ -2,19 +2,16 @@ import React from 'react';
 
 import logo from '../../assets/logo.png';
 import { Container, Logo, LogoutButton } from './styles';
+import { useAuth } from '../../contexts/auth';
 
 const Navbar: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  function handleLogout() {
-    console.log('Logout');
-
-    return null;
-  }
+  const { handleAuth } = useAuth();
 
   return (
     <Container>
       <Logo src={logo} />
-      <LogoutButton onClick={handleLogout}>Sair</LogoutButton>
+      <LogoutButton onClick={() => handleAuth(false)}>Sair</LogoutButton>
     </Container>
   );
 };

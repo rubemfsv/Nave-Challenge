@@ -10,15 +10,16 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ title }) => {
   const history = useHistory();
 
+  function handleBack() {
+    history.push('/');
+    history.go(0);
+  }
+
   return (
     <Container>
       <Card>
         <Header>
-          <BackIcon
-            onClick={() => {
-              history.goBack();
-            }}
-          />
+          <BackIcon onClick={() => handleBack()} />
           <Title>{title}</Title>
         </Header>
       </Card>

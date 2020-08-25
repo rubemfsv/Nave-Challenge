@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   width: 100%;
@@ -24,7 +23,8 @@ export const Title = styled.div`
   color: var(--color-black);
 `;
 
-export const StyledLink = styled(Link)`
+export const ButtonContainer = styled.div`
+  width: 176px;
   color: #000;
   text-decoration: none;
 
@@ -35,5 +35,29 @@ export const StyledLink = styled(Link)`
   &:active {
     color: #000;
     text-decoration: none;
+  }
+`;
+
+export const ButtonForm = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-black);
+
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  transition: opacity 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
   }
 `;

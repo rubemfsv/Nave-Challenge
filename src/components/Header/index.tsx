@@ -1,16 +1,21 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import ButtonNaver from '../Buttons/ButtonNaver';
-
-import { Container, Title, StyledLink } from './styles';
+import { Container, Title, ButtonContainer, ButtonForm } from './styles';
 
 const Header: React.FC = () => {
+  const history = useHistory();
+
+  function handleNew() {
+    history.push('/new');
+    history.go(0);
+  }
   return (
     <Container>
       <Title>Navers</Title>
-      <StyledLink to="/new">
-        <ButtonNaver title="Adicionar Naver" />
-      </StyledLink>
+      <ButtonContainer onClick={() => handleNew()}>
+        <ButtonForm>Adicionar Naver</ButtonForm>
+      </ButtonContainer>
     </Container>
   );
 };

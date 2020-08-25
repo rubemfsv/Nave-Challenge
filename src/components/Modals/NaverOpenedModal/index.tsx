@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import {
   Container,
@@ -29,7 +30,8 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
 }) => {
   const [isNaverModalOpen, setIsNaverModalOpen] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  const history = useHistory();
 
   function handleNaverModal() {
     setIsNaverModalOpen(!isNaverModalOpen);
@@ -40,10 +42,9 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
     handleNaverModal();
   }
 
-  function handleEditModal() {
-    setIsEditModalOpen(!isEditModalOpen);
-    console.log('Edita');
-    console.log(isEditModalOpen);
+  function handleEdit() {
+    history.push('/edit');
+    history.go(0);
   }
 
   return (
@@ -66,7 +67,7 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
               <InfoContent>{project}</InfoContent>
               <ButtonsContainer>
                 <DeleteIcon onClick={() => handleDeleteModal()} />
-                <EditIcon onClick={() => handleEditModal()} />
+                <EditIcon onClick={() => handleEdit()} />
               </ButtonsContainer>
             </CardInfo>
           </Container>
