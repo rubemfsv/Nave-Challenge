@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import DeleteConfirmationModal from '../DeleteConfirmationModal';
+import NotificationModal from '../NotificationModal';
 
 import {
   Container,
@@ -28,7 +28,12 @@ const DeleteOpenedModal: React.FC = () => {
 
   return (
     <>
-      {isModalDeleted && <DeleteConfirmationModal />}
+      {isModalDeleted && (
+        <NotificationModal
+          title="Naver excluído"
+          message="Naver excluído com sucesso!"
+        />
+      )}
 
       {isDeleteModalOpen && (
         <Filter>

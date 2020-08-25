@@ -1,24 +1,31 @@
 import { getToken } from './auth';
 
-export const useFetch = async (
+const useFetch = async (
   URL: string,
   method = 'GET',
   body?: object,
 ): Promise<Response | any> => {
   const headers = new Headers();
+
+  headers.append('Authorization', `Bearer ${getToken()}`);
+  headers.append('Content-type', 'application/json');
+
+  console.log(headers);
+
   const response = await fetch(URL, {
     method,
     headers,
     body: JSON.stringify(body),
   });
 
-  headers.append('Authorization', `Bearer ${getToken()}`);
-  headers.append('Content-type', 'application/json');
+  console.log(response);
 
   if (response.status === 401) {
-    (window as any).handleChangeAuth(false);
+    (window as any).handleAuth(false);
   } else if (response.status !== 200) {
     throw new Error(`${response.status}`);
   }
   return response;
 };
+
+export default useFetch;

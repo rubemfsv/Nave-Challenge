@@ -10,7 +10,7 @@ const AppRoute: React.FC = () => {
     <Switch>
       <Route path="/" component={Home} exact />
       <Route path="/new" component={NewNaver} exact />
-      <Route path="/edit" component={EditNaver} exact />
+      <Route path="/edit/:id" component={EditNaver} exact />
     </Switch>
   );
 };

@@ -1,44 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 import Naver from '../Naver';
 
 import { Container } from './styles';
 
+import fetch from '../../services/api';
+
+import { NaverProps } from '../../interfaces/index';
+
 const NaverList: React.FC = () => {
+  const [users, setUsers] = useState<NaverProps[]>([]);
+  const [hasUser, setHasUser] = useState(false);
+
+  const fetchUser = async () => {
+    try {
+      setHasUser(true);
+      const response = await fetch(
+        'https://navedex-api.herokuapp.com/v1/navers',
+      );
+      const data = await response.json();
+      setHasUser(false);
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      setUsers(await fetchUser());
+    })();
+  }, []);
+
   return (
     <Container>
-      <Naver
-        jobRole="Front End Engineer 1"
-        admissionDate="01/09/2020"
-        birthdate="15/06/1996"
-        project="Project Frontend Test"
-        name="Rubem Ferreira 1"
-        url="https://github.com/rubemfsv.png"
-      />
-      <Naver
-        jobRole="Front End Engineer 2"
-        admissionDate="01/09/2020"
-        birthdate="15/06/1996"
-        project="Project Frontend Test"
-        name="Rubem Ferreira 2"
-        url="https://github.com/rubemfsv.png"
-      />
-      <Naver
-        jobRole="Front End Engineer 3"
-        admissionDate="01/09/2020"
-        birthdate="15/06/1996"
-        project="Project Frontend Test"
-        name="Rubem Ferreira 3"
-        url="https://github.com/rubemfsv.png"
-      />
-      <Naver
-        jobRole="Front End Engineer 4"
-        admissionDate="01/09/2020"
-        birthdate="15/06/1996"
-        project="Project Frontend Test"
-        name="Rubem Ferreira 4"
-        url="https://github.com/rubemfsv.png"
-      />
+      {!hasUser ? (
+        <>
+          {users?.map((user) => (
+            <Naver
+              job_role={user.job_role}
+              admission_date={user.admission_date}
+              birthdate={user.birthdate}
+              project={user.project}
+              name={user.name}
+              url={user.url}
+            />
+          ))}
+        </>
+      ) : (
+        <div />
+      )}
     </Container>
   );
 };

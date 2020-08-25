@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 600px;
+  width: 650px;
   height: 408px;
 
   border: none;
@@ -51,4 +51,74 @@ export const Title = styled.div`
   align-items: center;
 
   color: var(--color-black);
+`;
+
+export const Body = styled.form`
+  margin-top: 35px;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  margin-top: 10px;
+`;
+
+export const InputContainer = styled.div`
+  margin-top: -5px;
+
+  > input {
+    width: 280px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    margin-right: 32px;
+
+    background: var(--color-white);
+
+    border: 1px solid #424242;
+    box-sizing: border-box;
+  }
+
+  > label {
+    width: 100%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--color-black);
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  width: 176px;
+  height: 40px;
+  margin-left: 416px;
+`;
+
+export const ButtonForm = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--color-black);
+
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  transition: opacity 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
 `;

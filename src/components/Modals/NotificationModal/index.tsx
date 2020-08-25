@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { NotificationProps } from '../../../interfaces/index';
 
 import { Container, Filter, Header, Title, Warning, Close } from './styles';
 
-const DeleteConfirmationModal: React.FC = () => {
+const NotificationModal: React.FC<NotificationProps> = ({ title, message }) => {
   const [isModalDeleted, setIsModalDeleted] = useState(true);
 
+  const history = useHistory();
+
   function handleDeleteConfirmation() {
-    setIsModalDeleted(!isModalDeleted);
-    console.log('Dele');
+    history.push('/');
+    history.go(0);
   }
 
   return (
@@ -16,10 +21,10 @@ const DeleteConfirmationModal: React.FC = () => {
         <Filter>
           <Container>
             <Header>
-              <Title>Naver excluído</Title>
+              <Title>{title}</Title>
               <Close onClick={() => handleDeleteConfirmation()} />
             </Header>
-            <Warning>Naver excluído com sucesso!</Warning>
+            <Warning>{message}</Warning>
           </Container>
         </Filter>
       )}
@@ -27,4 +32,4 @@ const DeleteConfirmationModal: React.FC = () => {
   );
 };
 
-export default DeleteConfirmationModal;
+export default NotificationModal;

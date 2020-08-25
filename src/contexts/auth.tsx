@@ -1,9 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-interface AuthContextData {
-  loged: boolean;
-  handleAuth(value: boolean): void | null;
-}
+import { AuthContextData } from '../interfaces/index';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
@@ -29,6 +26,8 @@ const AuthProvider: React.FC = ({ children }) => {
     setLoged(value);
     handleLogin(value);
   };
+
+  (window as any).handleAuth = handleAuth;
 
   return (
     <AuthContext.Provider value={{ loged, handleAuth }}>

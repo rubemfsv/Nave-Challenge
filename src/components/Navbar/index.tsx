@@ -5,7 +5,6 @@ import { Container, Logo, LogoutButton } from './styles';
 import { useAuth } from '../../contexts/auth';
 
 const Navbar: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const { handleAuth } = useAuth();
 
   return (

@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import NaverOpenedModal from '../Modals/NaverOpenedModal';
 import DeleteOpenedModal from '../Modals/DeleteOpenedModal';
 
+import { NaverProps } from '../../interfaces/index';
+
 import {
   Container,
   Card,
@@ -16,18 +18,9 @@ import {
   EditIcon,
 } from './styles';
 
-export interface NaverProps {
-  jobRole: string;
-  admissionDate: string;
-  birthdate: string;
-  project: string;
-  name: string;
-  url: string;
-}
-
 const Naver: React.FC<NaverProps> = ({
-  jobRole,
-  admissionDate,
+  job_role,
+  admission_date,
   birthdate,
   project,
   name,
@@ -55,8 +48,8 @@ const Naver: React.FC<NaverProps> = ({
     <>
       {isNaverModalOpen && (
         <NaverOpenedModal
-          jobRole={jobRole}
-          admissionDate={admissionDate}
+          job_role={job_role}
+          admission_date={admission_date}
           birthdate={birthdate}
           project={project}
           name={name}
@@ -70,7 +63,7 @@ const Naver: React.FC<NaverProps> = ({
           <ClickArea onClick={() => handleNaverModal()}>
             <Image src={url} alt={name} />
             <Name>{name}</Name>
-            <Position>{jobRole}</Position>
+            <Position>{job_role}</Position>
           </ClickArea>
           <ButtonsContainer>
             <DeleteIcon onClick={() => handleDeleteModal()} />

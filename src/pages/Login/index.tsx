@@ -17,6 +17,8 @@ import {
   ButtonForm,
 } from './styles';
 
+type EventType = React.ChangeEvent<HTMLInputElement>;
+
 const Login: React.FC = () => {
   const [loginInfo, setLoginInfo] = useState({});
   const { handleAuth } = useAuth();
@@ -25,7 +27,7 @@ const Login: React.FC = () => {
   const history = useHistory();
 
   const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: EventType) => {
       event.persist();
       setLoginInfo(() => ({
         ...loginInfo,

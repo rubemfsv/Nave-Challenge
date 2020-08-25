@@ -16,17 +16,16 @@ import {
   Filter,
 } from './styles';
 
-import { NaverProps } from '../../Naver';
+import { NaverProps } from '../../../interfaces/index';
 import DeleteOpenedModal from '../DeleteOpenedModal';
 
 const NaverOpenedModal: React.FC<NaverProps> = ({
-  jobRole,
-  admissionDate,
+  job_role,
+  admission_date,
   birthdate,
   project,
   name,
   url,
-  children,
 }) => {
   const [isNaverModalOpen, setIsNaverModalOpen] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -58,11 +57,11 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
             <CardInfo>
               <Close onClick={() => handleNaverModal()} />
               <Name>{name}</Name>
-              <Position>{jobRole}</Position>
+              <Position>{job_role}</Position>
               <InfoTitle>Idade</InfoTitle>
               <InfoContent>{birthdate}</InfoContent>
               <InfoTitle>Tempo de Empresa</InfoTitle>
-              <InfoContent>{admissionDate}</InfoContent>
+              <InfoContent>{admission_date}</InfoContent>
               <InfoTitle>Projetos que participou</InfoTitle>
               <InfoContent>{project}</InfoContent>
               <ButtonsContainer>
