@@ -32,9 +32,13 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
   const [isNaverModalOpen, setIsNaverModalOpen] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [users, setUsers] = useState<NaverProps[]>([]);
-  const [userToDelete, setUserToDelete] = useState<string | number>(-1);
-
   const [hasUser, setHasUser] = useState(false);
+
+  const admissionYear = admission_date.substring(0, 4);
+  const currentWorkingTime = 2020 - parseInt(admissionYear);
+
+  const birthYear = birthdate.substring(0, 4);
+  const currentAge = 2020 - parseInt(birthYear);
 
   const history = useHistory();
 
@@ -95,9 +99,9 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
               <Name>{name}</Name>
               <Position>{job_role}</Position>
               <InfoTitle>Idade</InfoTitle>
-              <InfoContent>{birthdate}</InfoContent>
+              <InfoContent>{currentAge} anos</InfoContent>
               <InfoTitle>Tempo de Empresa</InfoTitle>
-              <InfoContent>{admission_date}</InfoContent>
+              <InfoContent>{currentWorkingTime} anos</InfoContent>
               <InfoTitle>Projetos que participou</InfoTitle>
               <InfoContent>{project}</InfoContent>
               <ButtonsContainer>
