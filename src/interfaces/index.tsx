@@ -1,4 +1,5 @@
 export interface NaverProps {
+  id?: string;
   job_role: string;
   admission_date: string;
   birthdate: string;

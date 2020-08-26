@@ -28,8 +28,6 @@ const EditNavers: React.FC = () => {
 
   const handleSubmit = async (body: any) => {
     try {
-      // delete body.id;
-      // delete body.user_id;
       await fetch(`${baseUrl}/${id}`, 'PUT', body);
       setNotification(true);
     } catch (err) {
@@ -40,7 +38,11 @@ const EditNavers: React.FC = () => {
   return (
     <Container>
       <Navbar />
-      <Form title="Editar Naver" onSubmit={handleSubmit} />
+      <Form
+        title="Editar Naver"
+        onSubmit={handleSubmit}
+        naverData={naverData}
+      />
       {notification && (
         <NotificationModal
           title="Naver atualizado"

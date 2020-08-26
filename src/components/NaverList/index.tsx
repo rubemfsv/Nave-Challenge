@@ -38,6 +38,8 @@ const NaverList: React.FC = () => {
         <>
           {users?.map((user) => (
             <Naver
+              key={user.id}
+              id={user.id}
               job_role={user.job_role}
               admission_date={user.admission_date}
               birthdate={user.birthdate}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import NotificationModal from '../NotificationModal';
 
@@ -13,7 +14,12 @@ import {
   DeleteButton,
 } from './styles';
 
-const DeleteOpenedModal: React.FC = () => {
+interface IProps {
+  id: string;
+  handleDeleteUser(id?: string | number): Promise<void>;
+}
+
+const DeleteOpenedModal: React.FC<IProps> = ({ id, handleDeleteUser }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(true);
   const [isModalDeleted, setIsModalDeleted] = useState(false);
 
@@ -21,10 +27,11 @@ const DeleteOpenedModal: React.FC = () => {
     setIsDeleteModalOpen(!isDeleteModalOpen);
   }
 
-  function handleDeleteConfirmation() {
+  const handleDeleteConfirmation = () => {
+    handleDeleteUser(id);
     setIsModalDeleted(!isModalDeleted);
-    handleDeleteModal();
-  }
+    setIsDeleteModalOpen(!isDeleteModalOpen);
+  };
 
   return (
     <>

@@ -45,25 +45,27 @@ const Form: React.FC<FormProps> = ({ title, naverData, onSubmit }) => {
     }));
   }
 
-  function handleCheckFields() {
-    console.log(userInfo);
-    for (const val in userInfo) {
-      if (!(userInfo as any)[val].length) {
-        return false;
-      }
-    }
-    return true;
-  }
+  // function handleCheckFields() {
+  //   console.log(userInfo);
+  //   for (const val in userInfo) {
+  //     if (!(userInfo as any)[val].length) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const check = handleCheckFields();
-    if (check) {
-      console.log(userInfo);
-      onSubmit(userInfo);
-    } else {
-      setHasErr(true);
-    }
+    onSubmit(userInfo);
+
+    // const check = handleCheckFields();
+    // if (check) {
+    //   console.log(userInfo);
+    //   onSubmit(userInfo);
+    // } else {
+    //   setHasErr(true);
+    // }
   }
 
   return (
