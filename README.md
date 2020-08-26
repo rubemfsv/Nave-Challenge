@@ -17,5 +17,8 @@ Em seguida rode:
 ### Sistema em produção no link abaixo
 https://nave-challenge.vercel.app/
 
+### Dificuldades
+Na edição, só é confirmada a edição quando o usuário altera todos os campos, faltou ajustar esse detalhe. Devido ao tempo, não pude fazer todas as melhorias planejadas como esta., a alteração para o uso do Link to e a exibição de mensagens de erros para auxiliar o usuário final com feedbacks das ações.
+
 ### Mais informações sobre o desafio
 https://github.com/naveteam/front-end-challenge
