@@ -11,7 +11,7 @@ export interface NaverProps {
 export interface FormProps {
   title: string;
   naverData?: NaverProps;
-  onSubmit: (body: object) => void;
+  onSubmit(body: object): void;
 }
 
 export interface ResponseProps {
@@ -30,4 +30,9 @@ export interface AuthContextData {
 export interface NotificationProps {
   title: string;
   message: string;
+}
+
+export interface DeleteProps {
+  id: string;
+  handleDeleteNaver(id?: string | number): Promise<void>;
 }

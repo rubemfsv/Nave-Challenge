@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import DeleteOpenedModal from '../DeleteOpenedModal';
+import fetch from '../../../services/api';
+import { NaverProps } from '../../../interfaces/index';
+
 import {
   Container,
   Image,
@@ -16,10 +20,6 @@ import {
   Filter,
 } from './styles';
 
-import { NaverProps } from '../../../interfaces/index';
-import DeleteOpenedModal from '../DeleteOpenedModal';
-import fetch from '../../../services/api';
-
 const NaverOpenedModal: React.FC<NaverProps> = ({
   id,
   job_role,
@@ -31,46 +31,40 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
 }) => {
   const [isNaverModalOpen, setIsNaverModalOpen] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [users, setUsers] = useState<NaverProps[]>([]);
-  const [hasUser, setHasUser] = useState(false);
+  const [navers, setNavers] = useState<NaverProps[]>([]);
 
   const admissionYear = admission_date.substring(0, 4);
-  const currentWorkingTime = 2020 - parseInt(admissionYear);
+  const currentWorkingTime = new Date().getFullYear() - parseInt(admissionYear);
 
   const birthYear = birthdate.substring(0, 4);
-  const currentAge = 2020 - parseInt(birthYear);
+  const currentAge = new Date().getFullYear() - parseInt(birthYear);
+  const baseUrl = 'https://navedex-api.herokuapp.com/v1/navers';
 
   const history = useHistory();
 
-  function handleNaverModal() {
-    setIsNaverModalOpen(!isNaverModalOpen);
-  }
-
-  const fetchUser = async () => {
+  const fetchNaver = async () => {
     try {
-      setHasUser(true);
-      const response = await fetch(
-        'https://navedex-api.herokuapp.com/v1/navers',
-      );
+      const response = await fetch(`${baseUrl}`);
       const data = await response.json();
-      setHasUser(false);
       return data;
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleDeleteUser = async (id: string | number) => {
+  const handleDeleteNaver = async (id: string | number) => {
     try {
-      await fetch(
-        `https://navedex-api.herokuapp.com/v1/navers/${id}`,
-        'DELETE',
-      );
-      setUsers(await fetchUser());
+      await fetch(`${baseUrl}/${id}`, 'DELETE');
+      setNavers(await fetchNaver());
     } catch (err) {
       console.error(err);
     }
   };
+
+  function handleNaverModal() {
+    setIsNaverModalOpen(!isNaverModalOpen);
+  }
+
   function handleDeleteModal() {
     setIsDeleteModalOpen(!isDeleteModalOpen);
     handleNaverModal();
@@ -86,7 +80,7 @@ const NaverOpenedModal: React.FC<NaverProps> = ({
       {isDeleteModalOpen && (
         <DeleteOpenedModal
           id={id as string}
-          handleDeleteUser={handleDeleteUser}
+          handleDeleteNaver={handleDeleteNaver}
         />
       )}
 

@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { useAuth } from '../../contexts/auth';
+
 import logo from '../../assets/logo.png';
 import { Container, Logo, LogoutButton } from './styles';
-import { useAuth } from '../../contexts/auth';
 
 const Navbar: React.FC = () => {
   const { handleAuth } = useAuth();

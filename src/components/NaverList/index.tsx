@@ -2,24 +2,23 @@ import React, { useEffect, useState, useMemo } from 'react';
 
 import Naver from '../Naver';
 
-import { Container } from './styles';
-
 import fetch from '../../services/api';
-
 import { NaverProps } from '../../interfaces/index';
 
-const NaverList: React.FC = () => {
-  const [users, setUsers] = useState<NaverProps[]>([]);
-  const [hasUser, setHasUser] = useState(false);
+import { Container } from './styles';
 
-  const fetchUser = async () => {
+const NaverList: React.FC = () => {
+  const [navers, setNavers] = useState<NaverProps[]>([]);
+  const [hasNaver, setHasNaver] = useState(false);
+
+  const baseUrl = 'https://navedex-api.herokuapp.com/v1/navers';
+
+  const fetchNavers = async () => {
     try {
-      setHasUser(true);
-      const response = await fetch(
-        'https://navedex-api.herokuapp.com/v1/navers',
-      );
+      setHasNaver(true);
+      const response = await fetch(`${baseUrl}`);
       const data = await response.json();
-      setHasUser(false);
+      setHasNaver(false);
       return data;
     } catch (err) {
       console.error(err);
@@ -28,15 +27,15 @@ const NaverList: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      setUsers(await fetchUser());
+      setNavers(await fetchNavers());
     })();
   }, []);
 
   return (
     <Container>
-      {!hasUser ? (
+      {!hasNaver ? (
         <>
-          {users?.map((user) => (
+          {navers?.map((user) => (
             <Naver
               key={user.id}
               id={user.id}

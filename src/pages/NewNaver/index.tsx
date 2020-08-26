@@ -12,11 +12,11 @@ import NotificationModal from '../../components/Modals/NotificationModal';
 const NewNaver: React.FC = () => {
   const [notification, setNotification] = useState(false);
 
-  const baseUrl = 'https://navedex-api.herokuapp.com/v1';
+  const baseUrl = 'https://navedex-api.herokuapp.com/v1/navers';
 
   const handleSubmit = async (body: object) => {
     try {
-      await api(`${baseUrl}/navers`, 'POST', body);
+      await api(`${baseUrl}`, 'POST', body);
       setNotification(true);
     } catch (err) {
       console.error(err);

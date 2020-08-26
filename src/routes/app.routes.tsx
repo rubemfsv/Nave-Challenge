@@ -6,11 +6,14 @@ import NewNaver from '../pages/NewNaver';
 import EditNaver from '../pages/EditNaver';
 
 const AppRoute: React.FC = () => {
+  const Pagina404 = () => <div>Página 404</div>;
+
   return (
     <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/new" component={NewNaver} exact />
-      <Route path="/edit/:id" component={EditNaver} exact />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/new" component={NewNaver} />
+      <Route exact path="/edit/:id" component={EditNaver} />
+      <Route component={Pagina404} />
     </Switch>
   );
 };

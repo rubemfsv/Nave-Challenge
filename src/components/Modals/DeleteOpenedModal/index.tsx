@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import NotificationModal from '../NotificationModal';
+
+import { DeleteProps } from '../../../interfaces/index';
 
 import {
   Container,
@@ -14,12 +15,10 @@ import {
   DeleteButton,
 } from './styles';
 
-interface IProps {
-  id: string;
-  handleDeleteUser(id?: string | number): Promise<void>;
-}
-
-const DeleteOpenedModal: React.FC<IProps> = ({ id, handleDeleteUser }) => {
+const DeleteOpenedModal: React.FC<DeleteProps> = ({
+  id,
+  handleDeleteNaver,
+}) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(true);
   const [isModalDeleted, setIsModalDeleted] = useState(false);
 
@@ -27,11 +26,11 @@ const DeleteOpenedModal: React.FC<IProps> = ({ id, handleDeleteUser }) => {
     setIsDeleteModalOpen(!isDeleteModalOpen);
   }
 
-  const handleDeleteConfirmation = () => {
-    handleDeleteUser(id);
+  function handleDeleteConfirmation() {
+    handleDeleteNaver(id);
     setIsModalDeleted(!isModalDeleted);
     setIsDeleteModalOpen(!isDeleteModalOpen);
-  };
+  }
 
   return (
     <>

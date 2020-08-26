@@ -4,7 +4,7 @@ const useFetch = async (
   URL: string,
   method = 'GET',
   body?: object,
-): Promise<Response | any> => {
+): Promise<Response> => {
   const headers = new Headers();
 
   headers.append('Authorization', `Bearer ${getToken()}`);

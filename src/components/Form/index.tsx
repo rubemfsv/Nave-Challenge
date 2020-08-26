@@ -1,5 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import { FormProps } from '../../interfaces/index';
 
 import {
@@ -27,7 +28,7 @@ const initialState = {
 };
 
 const Form: React.FC<FormProps> = ({ title, naverData, onSubmit }) => {
-  const [userInfo, setUserInfo] = useState(initialState);
+  const [naverInfo, setNaverInfo] = useState(initialState);
   const [hasErr, setHasErr] = useState(false);
 
   const history = useHistory();
@@ -39,33 +40,15 @@ const Form: React.FC<FormProps> = ({ title, naverData, onSubmit }) => {
 
   function handleChange(event: EventType) {
     event.persist();
-    setUserInfo(() => ({
-      ...userInfo,
+    setNaverInfo(() => ({
+      ...naverInfo,
       [event.target.name]: event.target.value,
     }));
   }
 
-  // function handleCheckFields() {
-  //   console.log(userInfo);
-  //   for (const val in userInfo) {
-  //     if (!(userInfo as any)[val].length) {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // }
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onSubmit(userInfo);
-
-    // const check = handleCheckFields();
-    // if (check) {
-    //   console.log(userInfo);
-    //   onSubmit(userInfo);
-    // } else {
-    //   setHasErr(true);
-    // }
+    onSubmit(naverInfo);
   }
 
   return (
