@@ -29,7 +29,6 @@ const initialState = {
 
 const Form: React.FC<FormProps> = ({ title, naverData, onSubmit }) => {
   const [naverInfo, setNaverInfo] = useState(initialState);
-  const [hasErr, setHasErr] = useState(false);
 
   const history = useHistory();
 

@@ -54,7 +54,7 @@ const Login: React.FC = () => {
       history.push('/');
       history.go(0);
     } else {
-      console.log('Erro');
+      console.log('err');
     }
   }
 
