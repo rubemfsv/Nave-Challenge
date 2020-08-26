@@ -14,5 +14,8 @@ Em seguida rode:
 
 #### `yarn start`
 
+### Sistema em produção no link abaixo
+https://nave-challenge.vercel.app/
+
 ### Mais informações sobre o desafio
 https://github.com/naveteam/front-end-challenge
